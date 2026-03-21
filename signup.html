@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Started — Celia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0e0e0e;
+      --white: #fafaf7;
+      --green: #1a6b3c;
+      --green-light: #e8f5ee;
+      --green-mid: #2d8a52;
+      --sand: #f5f0e8;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: rgba(0,0,0,0.1);
+      --error: #c0392b;
+    }
+
+    html, body {
+      min-height: 100vh;
+      background: var(--white);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2.5rem;
+      background: rgba(250,250,247,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--text); }
+
+    main {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    .bg-circle-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, #a8d5b8, transparent);
+      top: -100px; right: -150px;
+    }
+    .bg-circle-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, #c8e6d4, transparent);
+      bottom: 0; left: -100px;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 960px;
+      width: 100%;
+      position: relative;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+      width: fit-content;
+    }
+
+    .badge span {
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .left h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 2.6rem;
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+      color: var(--black);
+    }
+
+    .left h1 em {
+      font-style: italic;
+      color: var(--green-mid);
+    }
+
+    .left p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .feature-dot {
+      width: 20px; height: 20px;
+      min-width: 20px;
+      background: var(--green-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-dot svg {
+      width: 11px; height: 11px;
+      color: var(--green);
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.06);
+      animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @keyframes slideUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card h2 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      color: var(--black);
+    }
+
+    .card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .flag {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      pointer-events: none;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"] {
+      width: 100%;
+      padding: 0.875rem 1rem 0.875rem 3rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      padding-left: 1rem;
+    }
+
+    input:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(26,107,60,0.08);
+    }
+
+    input.error {
+      border-color: var(--error);
+    }
+
+    .error-msg {
+      font-size: 0.8rem;
+      color: var(--error);
+      margin-top: 0.4rem;
+      display: none;
+    }
+
+    .error-msg.visible {
+      display: block;
+    }
+
+    .cea-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: var(--sand);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .cea-note svg {
+      min-width: 14px;
+      width: 14px;
+      margin-top: 2px;
+      color: var(--muted);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 1rem;
+      background: var(--black);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-submit:hover:not(:disabled) {
+      background: #2a2a2a;
+      transform: translateY(-1px);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .btn-submit .spinner {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+
+    .btn-submit.loading .spinner { display: block; }
+    .btn-submit.loading .btn-text { display: none; }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .terms {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+
+    .price-tag {
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .price-tag .currency {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--black);
+    }
+
+    .price-tag .amount {
+      font-family: 'Fraunces', serif;
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: var(--black);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .price-tag .period {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 1.5rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .left h1 { font-size: 2rem; }
+      nav { padding: 1rem 1.5rem; }
+      main { padding: 6rem 1.5rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">Celia</a>
+    <a href="/" class="nav-link">← Back to homepage</a>
+  </nav>
+
+  <main>
+    <div class="bg-circle bg-circle-1"></div>
+    <div class="bg-circle bg-circle-2"></div>
+
+    <div class="container">
+      <div class="left">
+        <div class="badge">
+          <span></span>
+          Now accepting agents
+        </div>
+        <h1>Start closing deals<br>while you <em>sleep.</em></h1>
+        <p>Celia handles your leads, follow-ups, and listing content — so you can focus on closing. Set up in under 20 minutes.</p>
+
+        <div class="features">
+          <div class="feature">
+            <div class="feature-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            24/7 instant WhatsApp lead response
+          </div>
+          <div class="feature">
+            <div class="feature-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            Daily morning briefing to your WhatsApp
+          </div>
+          <div class="feature">
+            <div class="feature-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            Listing content generated in seconds
+          </div>
+          <div class="feature">
+            <div class="feature-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            ABSD, HDB, TDSR advisory on demand
+          </div>
+          <div class="feature">
+            <div class="feature-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            Automatic Day 3 and Day 7 follow-ups
+          </div>
+          <div class="feature">
+            <div class="feature-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            CEA register check on every new contact
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="price-tag">
+          <span class="currency">S$</span>
+          <span class="amount">99</span>
+          <span class="period">/ month</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>Create your account</h2>
+        <p>Enter your details below. You'll be taken to a secure Stripe checkout to complete your subscription.</p>
+
+        <div class="form-group">
+          <label for="name">Full name</label>
+          <div class="input-wrap">
+            <input type="text" id="name" placeholder="e.g. Sarah Tan" autocomplete="name" />
+          </div>
+          <div class="error-msg" id="name-error">Please enter your full name</div>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">WhatsApp number (Singapore)</label>
+          <div class="input-wrap">
+            <span class="flag">🇸🇬</span>
+            <input type="tel" id="phone" placeholder="e.g. 91234567" maxlength="8" />
+          </div>
+          <div class="error-msg" id="phone-error">Please enter a valid 8-digit Singapore number</div>
+        </div>
+
+        <div class="form-group">
+          <label for="cea">CEA registration number</label>
+          <div class="input-wrap">
+            <input type="text" id="cea" placeholder="e.g. R012345A" style="text-transform:uppercase" />
+          </div>
+          <div class="error-msg" id="cea-error">Please enter your CEA registration number</div>
+        </div>
+
+        <div class="cea-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          Your CEA registration is verified automatically. Only licensed Singapore property agents can subscribe.
+        </div>
+
+        <button class="btn-submit" id="submitBtn" onclick="handleSubmit()">
+          <div class="spinner"></div>
+          <span class="btn-text">Continue to payment →</span>
+        </button>
+
+        <p class="terms">Secure payment via Stripe · Cancel anytime · SGD $99 billed monthly</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function handleSubmit() {
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const cea = document.getElementById('cea').value.trim();
+
+      let valid = true;
+
+      document.querySelectorAll('.error-msg').forEach(e => e.classList.remove('visible'));
+      document.querySelectorAll('input').forEach(e => e.classList.remove('error'));
+
+      if (!name) {
+        document.getElementById('name-error').classList.add('visible');
+        document.getElementById('name').classList.add('error');
+        valid = false;
+      }
+
+      if (!phone || phone.length < 8 || !/^[0-9]{8}$/.test(phone)) {
+        document.getElementById('phone-error').classList.add('visible');
+        document.getElementById('phone').classList.add('error');
+        valid = false;
+      }
+
+      if (!cea) {
+        document.getElementById('cea-error').classList.add('visible');
+        document.getElementById('cea').classList.add('error');
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      const btn = document.getElementById('submitBtn');
+      btn.classList.add('loading');
+      btn.disabled = true;
+
+      const fullPhone = '65' + phone;
+      const subscribeUrl = 'https://openclaw-qp1z.srv1387732.hstgr.cloud/subscribe?phone=' + encodeURIComponent(fullPhone) + '&name=' + encodeURIComponent(name) + '&cea=' + encodeURIComponent(cea.toUpperCase());
+
+      setTimeout(() => {
+        window.location.href = subscribeUrl;
+      }, 600);
+    }
+
+    document.getElementById('phone').addEventListener('input', function() {
+      this.value = this.value.replace(/[^0-9]/g, '');
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') handleSubmit();
+    });
+  </script>
+
+</body>
+</html>
