@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Celia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0e0e0e;
+      --white: #fafaf7;
+      --green: #1a6b3c;
+      --green-light: #e8f5ee;
+      --green-mid: #2d8a52;
+      --sand: #f5f0e8;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+    }
+
+    html, body {
+      min-height: 100vh;
+      background: var(--white);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2.5rem;
+      background: rgba(250,250,247,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--text); }
+
+    main {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    .bg-circle-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, #a8d5b8, transparent);
+      top: -100px; right: -150px;
+    }
+    .bg-circle-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, #c8e6d4, transparent);
+      bottom: 0; left: -100px;
+    }
+
+    .card {
+      position: relative;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 24px;
+      padding: 3.5rem;
+      max-width: 560px;
+      width: 100%;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+      animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    @keyframes slideUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .check-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px; height: 72px;
+      background: var(--green-light);
+      border-radius: 50%;
+      margin: 0 auto 2rem;
+      animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+      opacity: 0;
+      transform: scale(0.6);
+    }
+
+    @keyframes popIn {
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .check-wrap svg {
+      width: 32px; height: 32px;
+      color: var(--green);
+    }
+
+    .card h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--black);
+      text-align: center;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .card h1 em {
+      font-style: italic;
+      color: var(--green-mid);
+    }
+
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--sand);
+      border-radius: 12px;
+      animation: fadeIn 0.4s ease forwards;
+      opacity: 0;
+    }
+
+    .step:nth-child(1) { animation-delay: 0.5s; }
+    .step:nth-child(2) { animation-delay: 0.65s; }
+    .step:nth-child(3) { animation-delay: 0.8s; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .step-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px; height: 28px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .step-text strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 0.15rem;
+    }
+
+    .step-text span {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .whatsapp-note {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      background: var(--green-light);
+      border: 1px solid rgba(26,107,60,0.15);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      font-size: 0.88rem;
+      color: var(--green);
+      line-height: 1.5;
+    }
+
+    .whatsapp-note svg {
+      min-width: 20px;
+      width: 20px; height: 20px;
+    }
+
+    .btn-home {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      background: var(--black);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-home:hover {
+      background: #2a2a2a;
+      transform: translateY(-1px);
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 1.25rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 2rem 1.5rem; }
+      nav { padding: 1rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">Celia</a>
+    <a href="mailto:hello@usecelia.xyz" class="nav-link">hello@usecelia.xyz</a>
+  </nav>
+
+  <main>
+    <div class="bg-circle bg-circle-1"></div>
+    <div class="bg-circle bg-circle-2"></div>
+
+    <div class="card">
+      <div class="check-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+
+      <h1>You're in.<br><em>Celia is getting ready.</em></h1>
+      <p class="subtitle">Your subscription is confirmed. Check your WhatsApp — Celia has already sent you a welcome message to get started.</p>
+
+      <div class="whatsapp-note">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Celia has sent you a WhatsApp message with your onboarding instructions.
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <strong>Check your WhatsApp</strong>
+            <span>Celia has messaged you with everything you need to get started right now.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <strong>Tell Celia about your listings</strong>
+            <span>Describe any active property and Celia will generate listing content instantly.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <strong>Forward buyer enquiries</strong>
+            <span>Celia handles qualification, follow-ups, and ABSD calculations automatically.</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="/" class="btn-home">Back to homepage</a>
+      <p class="footer-note">Questions? WhatsApp us at <a href="mailto:hello@usecelia.xyz" style="color:inherit">hello@usecelia.xyz</a></p>
+    </div>
+  </main>
+
+  <footer>© 2026 Celia. Built for Singapore property agents.</footer>
+
+</body>
+</html>
