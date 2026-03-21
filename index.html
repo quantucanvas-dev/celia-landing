@@ -36,7 +36,6 @@
     overflow-x: hidden;
   }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -91,7 +90,6 @@
     gap: 32px;
   }
 
-  /* HERO */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -155,10 +153,7 @@
     animation: fadeUp 0.7s 0.2s ease both;
   }
 
-  .hero h1 em {
-    font-style: italic;
-    color: var(--gold);
-  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
 
   .hero-sub {
     font-size: 18px;
@@ -251,7 +246,6 @@
 
   .badge-icon { font-size: 15px; }
 
-  /* WHATSAPP MOCKUP */
   .mockup-section {
     padding: 0 48px 100px;
     display: flex;
@@ -265,10 +259,7 @@
     width: 100%;
     max-width: 420px;
     padding: 20px 16px;
-    box-shadow:
-      0 32px 80px rgba(26,23,20,0.12),
-      0 8px 24px rgba(26,23,20,0.06);
-    position: relative;
+    box-shadow: 0 32px 80px rgba(26,23,20,0.12), 0 8px 24px rgba(26,23,20,0.06);
   }
 
   .chat-header {
@@ -294,16 +285,8 @@
     flex-shrink: 0;
   }
 
-  .chat-header-info h4 {
-    color: white;
-    font-size: 15px;
-    font-weight: 500;
-  }
-
-  .chat-header-info p {
-    color: rgba(255,255,255,0.75);
-    font-size: 12px;
-  }
+  .chat-header-info h4 { color: white; font-size: 15px; font-weight: 500; }
+  .chat-header-info p { color: rgba(255,255,255,0.75); font-size: 12px; }
 
   .chat-messages { display: flex; flex-direction: column; gap: 10px; }
 
@@ -313,17 +296,6 @@
     border-radius: 12px;
     font-size: 14px;
     line-height: 1.5;
-    position: relative;
-    opacity: 0;
-    transform: translateY(8px);
-  }
-
-  .msg.show {
-    animation: msgAppear 0.3s ease forwards;
-  }
-
-  @keyframes msgAppear {
-    to { opacity: 1; transform: translateY(0); }
   }
 
   .msg-time {
@@ -337,12 +309,6 @@
     background: white;
     align-self: flex-start;
     border-bottom-left-radius: 4px;
-  }
-
-  .msg.sent {
-    background: #DCF8C6;
-    align-self: flex-end;
-    border-bottom-right-radius: 4px;
   }
 
   .msg.celia {
@@ -363,38 +329,6 @@
     text-transform: uppercase;
   }
 
-  .msg strong { font-weight: 500; }
-
-  .typing-indicator {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    background: white;
-    align-self: flex-start;
-    padding: 12px 16px;
-    border-radius: 12px;
-    border-bottom-left-radius: 4px;
-    opacity: 0;
-  }
-
-  .typing-indicator.show { animation: msgAppear 0.3s ease forwards; }
-
-  .typing-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: #999;
-    animation: typingBounce 1.2s ease infinite;
-  }
-
-  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
-  @keyframes typingBounce {
-    0%, 60%, 100% { transform: translateY(0); }
-    30% { transform: translateY(-5px); }
-  }
-
-  /* FEATURES */
   .features {
     padding: 80px 48px 100px;
     max-width: 1200px;
@@ -447,11 +381,7 @@
     transition: transform 0.3s ease;
   }
 
-  .feature-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(26,23,20,0.1);
-  }
-
+  .feature-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(26,23,20,0.1); }
   .feature-card:hover::before { transform: scaleX(1); }
 
   .feature-icon {
@@ -473,31 +403,17 @@
     color: var(--ink);
   }
 
-  .feature-card p {
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--ink-60);
-    line-height: 1.65;
-  }
+  .feature-card p { font-size: 15px; font-weight: 300; color: var(--ink-60); line-height: 1.65; }
 
-  /* HOW IT WORKS */
   .how-it-works {
     padding: 80px 48px 100px;
     background: var(--ink);
     color: var(--cream);
   }
 
-  .how-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
+  .how-inner { max-width: 1200px; margin: 0 auto; }
   .how-it-works .section-label { color: var(--gold); }
-
-  .how-it-works .section-title {
-    color: var(--cream);
-    margin-bottom: 64px;
-  }
+  .how-it-works .section-title { color: var(--cream); margin-bottom: 64px; }
 
   .steps {
     display: grid;
@@ -510,8 +426,7 @@
     content: '';
     position: absolute;
     top: 28px;
-    left: 10%;
-    right: 10%;
+    left: 10%; right: 10%;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(196,154,60,0.4), transparent);
   }
@@ -532,22 +447,9 @@
     margin-bottom: 24px;
   }
 
-  .step h4 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 19px;
-    color: var(--cream);
-    margin-bottom: 10px;
-    letter-spacing: -0.3px;
-  }
+  .step h4 { font-family: 'DM Serif Display', serif; font-size: 19px; color: var(--cream); margin-bottom: 10px; letter-spacing: -0.3px; }
+  .step p { font-size: 14px; font-weight: 300; color: rgba(250,248,244,0.55); line-height: 1.65; }
 
-  .step p {
-    font-size: 14px;
-    font-weight: 300;
-    color: rgba(250,248,244,0.55);
-    line-height: 1.65;
-  }
-
-  /* PRICING */
   .pricing {
     padding: 80px 48px 100px;
     max-width: 800px;
@@ -582,18 +484,8 @@
     margin: 16px 0 4px;
   }
 
-  .pricing-amount sup {
-    font-size: 32px;
-    letter-spacing: -1px;
-    vertical-align: super;
-  }
-
-  .pricing-period {
-    font-size: 16px;
-    color: var(--ink-60);
-    font-weight: 300;
-    margin-bottom: 40px;
-  }
+  .pricing-amount sup { font-size: 32px; letter-spacing: -1px; vertical-align: super; }
+  .pricing-period { font-size: 16px; color: var(--ink-60); font-weight: 300; margin-bottom: 40px; }
 
   .pricing-features {
     list-style: none;
@@ -604,14 +496,7 @@
     text-align: left;
   }
 
-  .pricing-features li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 15px;
-    color: var(--ink);
-    font-weight: 300;
-  }
+  .pricing-features li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--ink); font-weight: 300; }
 
   .check {
     width: 20px; height: 20px;
@@ -626,11 +511,7 @@
     margin-top: 2px;
   }
 
-  .pricing-note {
-    font-size: 13px;
-    color: var(--ink-30);
-    margin-top: 20px;
-  }
+  .pricing-note { font-size: 13px; color: var(--ink-30); margin-top: 20px; }
 
   .roi-callout {
     background: var(--gold-muted);
@@ -646,7 +527,6 @@
 
   .roi-callout strong { color: var(--gold); font-weight: 500; }
 
-  /* FOOTER */
   footer {
     padding: 48px;
     border-top: 1px solid var(--border);
@@ -655,28 +535,12 @@
     justify-content: space-between;
   }
 
-  .footer-logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 20px;
-    color: var(--ink);
-  }
-
+  .footer-logo { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--ink); }
   .footer-logo span { color: var(--gold); }
-
-  footer p {
-    font-size: 13px;
-    color: var(--ink-30);
-  }
-
-  footer a {
-    font-size: 13px;
-    color: var(--ink-60);
-    text-decoration: none;
-  }
-
+  footer p { font-size: 13px; color: var(--ink-30); }
+  footer a { font-size: 13px; color: var(--ink-60); text-decoration: none; }
   footer a:hover { color: var(--gold); }
 
-  /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
@@ -693,12 +557,8 @@
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
 
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
     .nav-links { gap: 20px; }
@@ -727,18 +587,16 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">Celi<span>a</span></div>
   <div class="nav-links">
     <a href="#features">Features</a>
     <a href="#how-it-works">How it works</a>
     <a href="#pricing">Pricing</a>
-    <a href="#pricing" class="nav-cta">Get started</a>
+    <a href="/signup" class="nav-cta">Get started</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-eyebrow">
@@ -748,7 +606,7 @@
   <h1>Your deals close while<br><em>you sleep</em></h1>
   <p class="hero-sub">Celia is your AI assistant that lives in WhatsApp — qualifying leads, booking viewings, and managing compliance 24 hours a day.</p>
   <div class="hero-actions">
-    <a href="#pricing" class="btn-primary">Start free trial</a>
+    <a href="/signup" class="btn-primary">Start free trial</a>
     <a href="#how-it-works" class="btn-secondary">See how it works →</a>
   </div>
   <div class="hero-proof">
@@ -762,7 +620,6 @@
   </div>
 </section>
 
-<!-- WHATSAPP MOCKUP -->
 <div class="mockup-section">
   <div class="chat-mockup">
     <div class="chat-header">
@@ -772,13 +629,52 @@
         <p>Your property assistant · online</p>
       </div>
     </div>
-    <div class="chat-messages" id="chatMessages">
-      <!-- Messages injected by JS -->
+    <div class="chat-messages">
+      <div class="msg received">
+        Hi is the Amber Sea unit still available?
+        <div class="msg-time">11:47 pm</div>
+      </div>
+      <div class="msg celia">
+        <div class="celia-label">Celia</div>
+        Hi there! Yes, the unit is still available.<br><br>
+        I'm Sarah's assistant — she's with clients right now but I can help you immediately.<br><br>
+        Are you looking for own stay or investment?
+        <div class="msg-time">11:47 pm</div>
+      </div>
+      <div class="msg received">
+        Own stay, for my family. Budget around $1.6M.
+        <div class="msg-time">11:48 pm</div>
+      </div>
+      <div class="msg celia">
+        <div class="celia-label">Celia</div>
+        🔑 Are you a Singapore Citizen, PR, or foreigner?<br><br>
+        This affects your stamp duty calculations.
+        <div class="msg-time">11:48 pm</div>
+      </div>
+      <div class="msg received">
+        SC. But we already own an HDB flat.
+        <div class="msg-time">11:49 pm</div>
+      </div>
+      <div class="msg celia">
+        <div class="celia-label">Celia</div>
+        ✅ As a SC buying a second property, ABSD of 20% applies — that's $320,000 on $1.6M.<br><br>
+        Many buyers sell their HDB first to avoid this. Worth discussing with Sarah.<br><br>
+        Would Saturday 2pm work for a viewing?
+        <div class="msg-time">11:49 pm</div>
+      </div>
+      <div class="msg received">
+        Yes Saturday works!
+        <div class="msg-time">11:49 pm</div>
+      </div>
+      <div class="msg celia">
+        <div class="celia-label">Celia</div>
+        🗓 Confirmed — Saturday 2pm at Amber Sea. Sarah will call you tomorrow to prepare.
+        <div class="msg-time">11:50 pm</div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- FEATURES -->
 <section class="features" id="features">
   <div class="reveal">
     <div class="section-label">What Celia does</div>
@@ -808,7 +704,7 @@
     <div class="feature-card reveal">
       <div class="feature-icon">✍️</div>
       <h3>Listing Content in Seconds</h3>
-      <p>Send Celia a voice note describing a property. Get back a CEA-compliant listing, three social captions, and a WhatsApp broadcast — ready in under a minute.</p>
+      <p>Describe a property to Celia and get back a CEA-compliant listing, three social captions, and a WhatsApp broadcast — ready in under a minute.</p>
     </div>
     <div class="feature-card reveal">
       <div class="feature-icon">🧮</div>
@@ -818,7 +714,6 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
 <section class="how-it-works" id="how-it-works">
   <div class="how-inner">
     <div class="reveal">
@@ -850,7 +745,6 @@
   </div>
 </section>
 
-<!-- PRICING -->
 <section class="pricing" id="pricing">
   <div class="reveal">
     <div class="section-label">Pricing</div>
@@ -870,95 +764,21 @@
       <li><span class="check">✓</span>Automatic rival agent detection (CEA register check)</li>
       <li><span class="check">✓</span>Automated follow-up sequences for cold leads</li>
     </ul>
-    <a href="mailto:hello@celia.sg" class="btn-primary" style="display:inline-block; margin-bottom: 16px;">Start your 14-day free trial</a>
-    <p class="pricing-note">No credit card required for trial · Cancel anytime</p>
+    <a href="/signup" class="btn-primary" style="display:inline-block; margin-bottom: 16px;">Start your free trial</a>
+    <p class="pricing-note">Cancel anytime · SGD $99 billed monthly</p>
     <div class="roi-callout">
       💡 <strong>The maths are simple.</strong> The average Singapore private condo commission is $15,000–$20,000. If Celia helps you close just one extra deal this year by responding faster than the competition, she pays for herself <strong>12 times over.</strong>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">Celi<span>a</span></div>
   <p>© 2026 Celia. Built for Singapore property agents.</p>
-  <a href="mailto:hello@celia.sg">hello@celia.sg</a>
+  <a href="mailto:hello@usecelia.xyz">hello@usecelia.xyz</a>
 </footer>
 
 <script>
-  // CHAT ANIMATION
-  const messages = [
-    { type: 'received', text: 'Hi is the Amber Sea unit still available?', time: '11:47 pm' },
-    { type: 'typing', delay: 800 },
-    { type: 'celia', text: 'Hi there! Yes, the unit is still available.\n\nI\'m Sarah\'s assistant — she\'s with clients right now but I can help you immediately.\n\nAre you looking for own stay or investment?', time: '11:47 pm', delay: 1600 },
-    { type: 'received', text: 'Own stay, for my family. Budget around $1.6M.', time: '11:48 pm', delay: 3200 },
-    { type: 'typing', delay: 3800 },
-    { type: 'celia', text: '🔑 Just to make sure I give you accurate info — are you a Singapore Citizen, PR, or foreigner?\n\nThis affects stamp duty calculations.', time: '11:48 pm', delay: 4600 },
-    { type: 'received', text: 'SC. But we already own an HDB flat.', time: '11:49 pm', delay: 6000 },
-    { type: 'typing', delay: 6600 },
-    { type: 'celia', text: '✅ Got it. As a SC buying a second property, ABSD of 20% applies — that\'s $320,000 on $1.6M.\n\nMany buyers in your position sell the HDB first to avoid this. Worth a conversation with Sarah.\n\nWould Saturday 2pm work for a viewing?', time: '11:49 pm', delay: 7400 },
-    { type: 'received', text: 'Yes Saturday works!', time: '11:49 pm', delay: 9200 },
-    { type: 'celia', text: '🗓 Confirmed — Saturday 2pm at Amber Sea. Sarah will call you tomorrow to prepare.\n\nYour name?', time: '11:50 pm', delay: 10200 },
-  ];
-
-  let msgIndex = 0;
-
-  function createMessage(msg) {
-    const container = document.getElementById('chatMessages');
-
-    if (msg.type === 'typing') {
-      const el = document.createElement('div');
-      el.className = 'typing-indicator';
-      el.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-      el.id = 'typing';
-      container.appendChild(el);
-      requestAnimationFrame(() => el.classList.add('show'));
-      return;
-    }
-
-    // Remove typing indicator
-    const typing = document.getElementById('typing');
-    if (typing) typing.remove();
-
-    const el = document.createElement('div');
-    el.className = `msg ${msg.type}`;
-
-    if (msg.type === 'celia') {
-      el.innerHTML = `<div class="celia-label">Celia</div>${msg.text.replace(/\n/g, '<br>')}<div class="msg-time">${msg.time}</div>`;
-    } else {
-      el.innerHTML = `${msg.text}<div class="msg-time">${msg.time}</div>`;
-    }
-
-    container.appendChild(el);
-    requestAnimationFrame(() => el.classList.add('show'));
-    container.scrollTop = container.scrollHeight;
-  }
-
-  function playNextMessage() {
-    if (msgIndex >= messages.length) {
-      // Restart after pause
-      setTimeout(() => {
-        document.getElementById('chatMessages').innerHTML = '';
-        msgIndex = 0;
-        playNextMessage();
-      }, 4000);
-      return;
-    }
-
-    const msg = messages[msgIndex];
-    const delay = msg.delay || 0;
-
-    setTimeout(() => {
-      createMessage(msg);
-      msgIndex++;
-      playNextMessage();
-    }, msgIndex === 0 ? 800 : (messages[msgIndex - 1].delay ? delay - messages[msgIndex - 1].delay : 600));
-  }
-
-  // Start chat animation
-  setTimeout(playNextMessage, 600);
-
-  // SCROLL REVEAL
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
@@ -967,7 +787,6 @@
       }
     });
   }, { threshold: 0.1 });
-
   reveals.forEach(el => observer.observe(el));
 </script>
 
