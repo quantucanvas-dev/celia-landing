@@ -16,6 +16,10 @@
       "dest": "/success.html"
     },
     {
+      "src": "/guide",
+      "dest": "/guide.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
