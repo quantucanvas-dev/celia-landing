@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Celia Agent Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF8F4;
+    --ink: #1A1714;
+    --ink-60: rgba(26,23,20,0.6);
+    --ink-30: rgba(26,23,20,0.3);
+    --gold: #C49A3C;
+    --gold-light: #F0E4C4;
+    --gold-muted: rgba(196,154,60,0.12);
+    --card: #FFFFFF;
+    --border: rgba(26,23,20,0.08);
+    --green: #2D6A4F;
+    --green-light: rgba(45,106,79,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 16px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(250,248,244,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .nav-right a {
+    font-size: 14px;
+    color: var(--ink-60);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-right a:hover { color: var(--ink); }
+
+  .btn-download {
+    background: var(--ink);
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.2s !important;
+  }
+
+  .btn-download:hover { background: var(--gold) !important; }
+
+  .hero {
+    padding: 120px 48px 64px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold-muted);
+    border: 1px solid rgba(196,154,60,0.2);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 em { font-style: italic; color: var(--gold); }
+
+  .hero p {
+    font-size: 17px;
+    color: var(--ink-60);
+    font-weight: 300;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .toc {
+    max-width: 800px;
+    margin: 0 auto 64px;
+    padding: 0 48px;
+  }
+
+  .toc-inner {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  .toc h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 14px;
+    transition: background 0.15s;
+  }
+
+  .toc-item:hover { background: var(--gold-muted); }
+
+  .toc-num {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--gold-muted);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 48px 120px;
+  }
+
+  .section {
+    margin-bottom: 64px;
+    scroll-margin-top: 80px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-num {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--gold-muted);
+    color: var(--gold);
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+  }
+
+  .section p {
+    font-size: 15px;
+    color: var(--ink-60);
+    font-weight: 300;
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+
+  .section p:last-child { margin-bottom: 0; }
+
+  .command-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+
+  .command-block .label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .command {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--cream);
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin: 6px 0;
+    border: 1px solid var(--border);
+  }
+
+  .chat-demo {
+    background: #E5DDD5;
+    border-radius: 16px;
+    padding: 16px;
+    margin: 20px 0;
+  }
+
+  .chat-demo-header {
+    background: #128C7E;
+    margin: -16px -16px 12px;
+    padding: 12px 16px;
+    border-radius: 16px 16px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .chat-avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--gold-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 14px;
+    color: var(--gold);
+  }
+
+  .chat-demo-header span {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .chat-messages { display: flex; flex-direction: column; gap: 8px; }
+
+  .bubble {
+    max-width: 80%;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .bubble.received {
+    background: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 3px;
+  }
+
+  .bubble.sent {
+    background: #DCF8C6;
+    align-self: flex-end;
+    border-bottom-right-radius: 3px;
+  }
+
+  .bubble.celia {
+    background: linear-gradient(135deg, #1A1714, #2D2822);
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 3px;
+  }
+
+  .bubble-label {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--gold);
+    margin-bottom: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .tip {
+    background: var(--green-light);
+    border: 1px solid rgba(45,106,79,0.15);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: var(--green);
+    margin: 16px 0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .tip-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  .warning {
+    background: rgba(196,154,60,0.08);
+    border: 1px solid rgba(196,154,60,0.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #7A5C0A;
+    margin: 16px 0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+
+  .table th {
+    background: var(--gold-muted);
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 500;
+    color: var(--ink);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink-60);
+    font-weight: 300;
+  }
+
+  .table tr:last-child td { border-bottom: none; }
+
+  .table tr:nth-child(even) td { background: rgba(0,0,0,0.015); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+  }
+
+  .footer-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--ink);
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  footer p { font-size: 13px; color: var(--ink-30); }
+  footer a { font-size: 13px; color: var(--ink-60); text-decoration: none; }
+  footer a:hover { color: var(--gold); }
+
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .hero { padding: 100px 20px 48px; }
+    .toc { padding: 0 20px; }
+    .content { padding: 0 20px 80px; }
+    .toc-grid { grid-template-columns: 1fr; }
+    footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Celi<span>a</span></a>
+  <div class="nav-right">
+    <a href="#getting-started">Getting started</a>
+    <a href="#listings">Listings</a>
+    <a href="#buyers">Buyers</a>
+    <a href="#advisory">Advisory</a>
+    <a href="guide.pdf" class="btn-download" download>Download PDF</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">Agent Handbook</div>
+  <h1>Everything you need to know about <em>Celia</em></h1>
+  <p>Your complete guide to getting the most out of your AI property assistant.</p>
+</div>
+
+<div class="toc reveal">
+  <div class="toc-inner">
+    <h3>In this guide</h3>
+    <div class="toc-grid">
+      <a href="#getting-started" class="toc-item"><span class="toc-num">1</span>Getting started</a>
+      <a href="#listings" class="toc-item"><span class="toc-num">2</span>Managing your listings</a>
+      <a href="#buyers" class="toc-item"><span class="toc-num">3</span>How Celia handles buyers</a>
+      <a href="#handoff" class="toc-item"><span class="toc-num">4</span>Taking over a conversation</a>
+      <a href="#content" class="toc-item"><span class="toc-num">5</span>Generating listing content</a>
+      <a href="#advisory" class="toc-item"><span class="toc-num">6</span>Property advisory</a>
+      <a href="#briefing" class="toc-item"><span class="toc-num">7</span>Morning briefing</a>
+      <a href="#followups" class="toc-item"><span class="toc-num">8</span>Automated follow-ups</a>
+      <a href="#cobroke" class="toc-item"><span class="toc-num">9</span>Co-broke detection</a>
+      <a href="#reference" class="toc-item"><span class="toc-num">10</span>Quick reference</a>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="section reveal" id="getting-started">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <h2>Getting started</h2>
+    </div>
+    <p>When you subscribe, Celia sends you a WhatsApp message to walk you through setup. The onboarding takes about 3 minutes and covers two things: setting your name and adding your first listing.</p>
+    <p>Celia will ask what name to use when introducing itself to buyers. If your name is David, Celia will say "I'm David's assistant" to every buyer who messages you.</p>
+    <p>After onboarding, your buyers are covered 24/7. Celia responds to every enquiry instantly — whether it's 2pm or 2am.</p>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <span>Celia never reveals it is an AI. Buyers think they are talking to your human assistant. This is intentional — it keeps the experience personal and professional.</span>
+    </div>
+  </div>
+
+  <div class="section reveal" id="listings">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <h2>Managing your listings</h2>
+    </div>
+    <p>Celia needs to know your active listings so it can answer buyer enquiries accurately. You manage listings entirely through WhatsApp — no portal or dashboard needed.</p>
+
+    <div class="command-block">
+      <div class="label">Add a listing</div>
+      <div class="command">Add listing: The Continuum, 2BR, 700sqft, $1.65M, freehold, D15, high floor unblocked view, near Tanjong Katong MRT</div>
+    </div>
+
+    <div class="command-block">
+      <div class="label">View your listings</div>
+      <div class="command">My listings</div>
+    </div>
+
+    <div class="command-block">
+      <div class="label">Update a price</div>
+      <div class="command">Update The Continuum price to $1.6M</div>
+    </div>
+
+    <div class="command-block">
+      <div class="label">Mark as sold</div>
+      <div class="command">Mark The Continuum as sold</div>
+    </div>
+
+    <div class="warning">
+      <span>⚠️</span>
+      <span>Always mark a listing as sold when a unit transacts. If you don't, Celia will continue telling buyers it is available which creates a poor experience.</span>
+    </div>
+  </div>
+
+  <div class="section reveal" id="buyers">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <h2>How Celia handles buyers</h2>
+    </div>
+    <p>When a buyer messages your WhatsApp — whether from PropertyGuru, 99.co, or directly — Celia responds instantly and follows a structured qualification flow.</p>
+
+    <div class="chat-demo">
+      <div class="chat-demo-header">
+        <div class="chat-avatar">C</div>
+        <span>Your assistant · online</span>
+      </div>
+      <div class="chat-messages">
+        <div class="bubble received">Hi is the Amber Sea unit still available?</div>
+        <div class="bubble celia">
+          <div class="bubble-label">Celia</div>
+          Hi there! Yes the unit is still available. I'm David's assistant — he's with clients right now but I can help you immediately.<br><br>Are you looking for own stay or investment?
+        </div>
+        <div class="bubble received">Own stay for my family. Budget around $1.6M.</div>
+        <div class="bubble celia">
+          <div class="bubble-label">Celia</div>
+          Are you a Singapore Citizen, PR, or foreigner? This helps me give you accurate stamp duty information.
+        </div>
+        <div class="bubble received">SC. We own an HDB flat currently.</div>
+        <div class="bubble celia">
+          <div class="bubble-label">Celia</div>
+          As a SC buying a second property, ABSD of 20% applies — that's $320,000 on $1.6M. Many buyers sell their HDB first to avoid this.<br><br>Would Saturday 2pm work for a viewing?
+        </div>
+      </div>
+    </div>
+
+    <p>Celia qualifies every lead by asking about intent, nationality, existing property ownership, budget, and timeline. You receive a morning briefing each day showing which leads are hot, warm, or cold.</p>
+  </div>
+
+  <div class="section reveal" id="handoff">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2>Taking over a conversation</h2>
+    </div>
+    <p>If you want to handle a buyer conversation personally, simply reply to them directly from your WhatsApp. Celia automatically detects that you have stepped in and goes silent for 2 hours.</p>
+    <p>After 2 hours of no activity from you, Celia automatically resumes handling that conversation. Every time you send a message, the 2-hour timer resets — so as long as you keep the conversation going, Celia stays silent.</p>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <span>You never need to type a command to take over. Just reply to the buyer naturally and Celia gets out of the way.</span>
+    </div>
+  </div>
+
+  <div class="section reveal" id="content">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <h2>Generating listing content</h2>
+    </div>
+    <p>Describe any property to Celia and it will generate three pieces of content instantly: a PropertyGuru listing description, an Instagram caption, and a WhatsApp broadcast message.</p>
+
+    <div class="command-block">
+      <div class="label">Example — describe the property naturally</div>
+      <div class="command">I have a 3BR at Parc Esta, District 14, 1000sqft, asking $2.1M, 99yr leasehold, mid floor, near Eunos MRT, owner upgrading</div>
+    </div>
+
+    <p>Celia will respond with all three pieces of content, CEA-compliant and ready to use. You can ask it to adjust tone, shorten, or change any detail.</p>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <span>All listing descriptions generated by Celia are CEA-compliant — no misleading claims, no unverified superlatives. Safe to use directly on PropertyGuru and 99.co.</span>
+    </div>
+  </div>
+
+  <div class="section reveal" id="advisory">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <h2>Property advisory</h2>
+    </div>
+    <p>Ask Celia any property question and get an accurate answer in seconds — even mid-client-call.</p>
+
+    <table class="table">
+      <tr><th>Question type</th><th>Example</th></tr>
+      <tr><td>ABSD calculation</td><td>Malaysian PR buying first property at $2M — what ABSD?</td></tr>
+      <tr><td>HDB eligibility</td><td>Can a single SC aged 32 buy a BTO?</td></tr>
+      <tr><td>TDSR calculation</td><td>Client earns $8,000/month — max loan repayment?</td></tr>
+      <tr><td>CPF usage</td><td>Can PRs use CPF to buy a condo?</td></tr>
+      <tr><td>LTV limits</td><td>Client has an existing HDB loan — what LTV on second property?</td></tr>
+      <tr><td>MOP rules</td><td>When can my client rent out their whole HDB flat?</td></tr>
+    </table>
+  </div>
+
+  <div class="section reveal" id="briefing">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <h2>Morning briefing</h2>
+    </div>
+    <p>Every morning at 7:30am, Celia sends you a WhatsApp summary of your leads categorised into three groups:</p>
+    <p><strong>HOT</strong> — messaged in the last 24 hours. These are your priority calls for the day.</p>
+    <p><strong>WARM</strong> — last active 1 to 3 days ago. Follow up today before they go cold.</p>
+    <p><strong>COLD</strong> — last active 3 to 7 days ago. Celia will send them an automated follow-up today.</p>
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <span>Read your briefing over morning coffee before you open your laptop. You will know exactly who to call and what to say before your day starts.</span>
+    </div>
+  </div>
+
+  <div class="section reveal" id="followups">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <h2>Automated follow-ups</h2>
+    </div>
+    <p>Celia automatically follows up with leads that have gone quiet. You never need to manually chase cold leads again.</p>
+
+    <table class="table">
+      <tr><th>Day</th><th>Action</th></tr>
+      <tr><td>Day 3</td><td>Celia sends a gentle check-in message on your behalf</td></tr>
+      <tr><td>Day 7</td><td>Celia sends a final follow-up with a new listing angle</td></tr>
+      <tr><td>Day 8+</td><td>Lead is marked closed and removed from your briefing</td></tr>
+    </table>
+
+    <p>If a cold lead replies at any point, they are automatically moved back to HOT status and appear in your next morning briefing.</p>
+  </div>
+
+  <div class="section reveal" id="cobroke">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <h2>Co-broke detection</h2>
+    </div>
+    <p>Every new number that messages you is automatically checked against the CEA Public Register. If the number belongs to a licensed property agent, Celia alerts you immediately instead of treating them as a buyer lead.</p>
+    <p>This prevents you from sharing your full listing brochure and floor plans with a competitor who is fishing for marketing materials.</p>
+    <div class="warning">
+      <span>⚠️</span>
+      <span>Celia sends a neutral opening reply to the agent while alerting you privately. You decide how to proceed with the co-broke enquiry.</span>
+    </div>
+  </div>
+
+  <div class="section reveal" id="reference">
+    <div class="section-header">
+      <div class="section-num">10</div>
+      <h2>Quick reference</h2>
+    </div>
+    <p>All commands you can send to Celia via WhatsApp:</p>
+
+    <table class="table">
+      <tr><th>Command</th><th>What it does</th></tr>
+      <tr><td>Add listing: [details]</td><td>Saves a new listing to your database</td></tr>
+      <tr><td>My listings</td><td>Shows all your active and sold listings</td></tr>
+      <tr><td>Update [property] price to $X</td><td>Updates the asking price on a listing</td></tr>
+      <tr><td>Mark [property] as sold</td><td>Marks a listing as sold</td></tr>
+      <tr><td>[Describe a property]</td><td>Generates PropertyGuru, Instagram and WhatsApp content</td></tr>
+      <tr><td>[Any property question]</td><td>ABSD, HDB, TDSR, CPF, LTV advisory</td></tr>
+    </table>
+
+    <div class="tip">
+      <span class="tip-icon">💡</span>
+      <span>Need help? Email us at hello@usecelia.xyz and we will get back to you within 24 hours.</span>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Celi<span>a</span></div>
+  <p>© 2026 Celia. Built for Singapore property agents.</p>
+  <a href="mailto:hello@usecelia.xyz">hello@usecelia.xyz</a>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
