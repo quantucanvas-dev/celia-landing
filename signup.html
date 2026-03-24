@@ -546,12 +546,6 @@
         valid = false;
       }
 
-      if (!cea) {
-        document.getElementById('cea-error').classList.add('visible');
-        document.getElementById('cea').classList.add('error');
-        valid = false;
-      }
-
       if (!valid) return;
 
       const btn = document.getElementById('submitBtn');
