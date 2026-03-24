@@ -7,21 +7,10 @@
     }
   ],
   "routes": [
-    {
-      "src": "/signup",
-      "dest": "/signup.html"
-    },
-    {
-      "src": "/success",
-      "dest": "/success.html"
-    },
-    {
-      "src": "/guide",
-      "dest": "/guide.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
+    { "src": "/signup", "dest": "/signup.html" },
+    { "src": "/success", "dest": "/success.html" },
+    { "src": "/guide", "dest": "/guide.html" },
+    { "src": "/connect", "dest": "/connect.html" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
