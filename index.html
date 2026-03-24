@@ -779,11 +779,22 @@
   <div style="display:flex;gap:20px;align-items:center;">
     <a href="/guide">Handbook</a>
     <a href="/connect">Connect WhatsApp</a>
-    <a href="mailto:hello@usecelia.xyz">hello@usecelia.xyz</a>
+    <a href="/cdn-cgi/l/email-protection#f29a979e9e9db287819791979e9b93dc8a8b88"><span class="__cf_email__" data-cfemail="553d3039393a152026303630393c347b2d2c2f">[email&#160;protected]</span></a>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script d
+<script>
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
-    entries.forEac
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
